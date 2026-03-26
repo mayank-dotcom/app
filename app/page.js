@@ -173,6 +173,15 @@ export default function LandingPage() {
     return () => clearInterval(timer)
   }, [])
 
+  // Manual navigation functions
+  const nextSlide = () => {
+    setCurrentGallerySlide((prev) => (prev + 1) % portfolioProjects.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentGallerySlide((prev) => (prev - 1 + portfolioProjects.length) % portfolioProjects.length)
+  }
+
   const services = [
     {
       icon: Heart,
@@ -576,9 +585,9 @@ export default function LandingPage() {
             </p>
           </motion.div>
 
-          {/* Circular Carousel Container */}
-          <div className="relative max-w-5xl mx-auto">
-            <div className="relative h-[600px] flex items-center justify-center">
+          {/* Circular Carousel Container - BIGGER SIZE */}
+          <div className="relative max-w-7xl mx-auto">
+            <div className="relative h-[800px] flex items-center justify-center">
               {portfolioProjects.map((project, index) => {
                 const isActive = currentGallerySlide === index
                 const isPrev = currentGallerySlide === (index + 1) % portfolioProjects.length
@@ -590,15 +599,15 @@ export default function LandingPage() {
                     className="absolute"
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{
-                      opacity: isActive ? 1 : isPrev || isNext ? 0.5 : 0,
-                      scale: isActive ? 1 : isPrev || isNext ? 0.7 : 0.5,
-                      x: isActive ? 0 : isPrev ? -400 : isNext ? 400 : 0,
+                      opacity: isActive ? 1 : isPrev || isNext ? 0.4 : 0,
+                      scale: isActive ? 1 : isPrev || isNext ? 0.6 : 0.5,
+                      x: isActive ? 0 : isPrev ? -500 : isNext ? 500 : 0,
                       zIndex: isActive ? 20 : isPrev || isNext ? 10 : 0,
                     }}
                     transition={{ duration: 1, ease: "easeInOut" }}
                   >
-                    <div className="relative w-[500px] h-[500px]">
-                      {/* Circular Image Container */}
+                    <div className="relative w-[700px] h-[700px]">
+                      {/* Circular Image Container - BIGGER */}
                       <motion.div
                         className="relative w-full h-full rounded-full overflow-hidden border-8 border-[#2C2C2C] shadow-[12px_12px_0_#2C2C2C]"
                         animate={isActive ? { rotate: [0, 2, -2, 0] } : {}}
@@ -613,36 +622,36 @@ export default function LandingPage() {
                         <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-30`} />
                       </motion.div>
 
-                      {/* Project Details Overlay */}
+                      {/* Project Details Overlay - BIGGER */}
                       {isActive && (
                         <motion.div
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.3 }}
-                          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-[90%]"
+                          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-[85%]"
                         >
-                          <div className="bg-white rounded-3xl p-6 border-4 border-[#2C2C2C] shadow-[8px_8px_0_#2C2C2C]">
+                          <div className="bg-white rounded-3xl p-8 border-4 border-[#2C2C2C] shadow-[10px_10px_0_#2C2C2C]">
                             <motion.div
-                              className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${project.color} text-white font-black text-sm mb-3 border-3 border-[#2C2C2C]`}
+                              className={`inline-block px-5 py-2 rounded-full bg-gradient-to-r ${project.color} text-white font-black text-base mb-4 border-3 border-[#2C2C2C]`}
                               animate={{ scale: [1, 1.05, 1] }}
                               transition={{ duration: 2, repeat: Infinity }}
                             >
                               {project.type}
                             </motion.div>
-                            <h3 className="text-2xl font-black text-[#2C2C2C] mb-2" style={{ fontFamily: 'var(--font-playful)' }}>
+                            <h3 className="text-3xl font-black text-[#2C2C2C] mb-3" style={{ fontFamily: 'var(--font-playful)' }}>
                               {project.title}
                             </h3>
-                            <p className="text-[#2C2C2C]/70 font-medium italic mb-3">
+                            <p className="text-[#2C2C2C]/70 font-medium italic mb-4 text-lg">
                               {project.description}
                             </p>
-                            <div className="flex justify-between items-center border-t-2 border-dashed border-[#2C2C2C]/20 pt-3">
+                            <div className="flex justify-between items-center border-t-2 border-dashed border-[#2C2C2C]/20 pt-4">
                               <div>
-                                <p className="text-xs font-bold text-[#2C2C2C]/60">CLIENT</p>
-                                <p className="text-sm font-black text-[#2C2C2C]">{project.client}</p>
+                                <p className="text-sm font-bold text-[#2C2C2C]/60">CLIENT</p>
+                                <p className="text-lg font-black text-[#2C2C2C]">{project.client}</p>
                               </div>
                               <div className="text-right">
-                                <p className="text-xs font-bold text-[#2C2C2C]/60">DATE</p>
-                                <p className="text-sm font-black text-[#2C2C2C]">{project.date}</p>
+                                <p className="text-sm font-bold text-[#2C2C2C]/60">DATE</p>
+                                <p className="text-lg font-black text-[#2C2C2C]">{project.date}</p>
                               </div>
                             </div>
                           </div>
@@ -654,12 +663,68 @@ export default function LandingPage() {
               })}
             </div>
 
+            {/* Beautiful Left/Right Controls */}
+            <div className="absolute top-1/2 left-0 right-0 transform -translate-y-1/2 flex justify-between px-8 pointer-events-none">
+              {/* Left Arrow Button */}
+              <motion.button
+                onClick={prevSlide}
+                className="pointer-events-auto w-20 h-20 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex items-center justify-center border-4 border-white shadow-[6px_6px_0_#2C2C2C] hover:shadow-[3px_3px_0_#2C2C2C] transition-all group"
+                whileHover={{ scale: 1.1, rotate: -5 }}
+                whileTap={{ scale: 0.9 }}
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.5 }}
+              >
+                <motion.svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  animate={{ x: [-2, 0, -2] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </motion.svg>
+              </motion.button>
+
+              {/* Right Arrow Button */}
+              <motion.button
+                onClick={nextSlide}
+                className="pointer-events-auto w-20 h-20 bg-gradient-to-br from-orange-400 to-yellow-500 rounded-full flex items-center justify-center border-4 border-white shadow-[6px_6px_0_#2C2C2C] hover:shadow-[3px_3px_0_#2C2C2C] transition-all group"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.9 }}
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.5 }}
+              >
+                <motion.svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  animate={{ x: [0, 2, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </motion.svg>
+              </motion.button>
+            </div>
+
             {/* Progress Indicator Dots */}
             <div className="flex justify-center gap-3 mt-12">
               {portfolioProjects.map((_, index) => (
-                <motion.div
+                <motion.button
                   key={index}
-                  className={`rounded-full border-3 border-[#2C2C2C] transition-all ${
+                  onClick={() => setCurrentGallerySlide(index)}
+                  className={`rounded-full border-3 border-[#2C2C2C] transition-all cursor-pointer ${
                     currentGallerySlide === index ? 'w-12 h-4' : 'w-4 h-4'
                   }`}
                   style={{
@@ -669,6 +734,7 @@ export default function LandingPage() {
                   }}
                   animate={currentGallerySlide === index ? { scale: [1, 1.1, 1] } : {}}
                   transition={{ duration: 0.5 }}
+                  whileHover={{ scale: 1.2 }}
                 />
               ))}
             </div>
