@@ -349,7 +349,7 @@ export default function LandingPage() {
             transition={{ duration: 0.8 }}
           >
             <motion.h1 
-              className="text-5xl md:text-8xl font-black text-[#E8DCC4] mb-6 relative inline-block"
+              className="text-5xl md:text-8xl font-black text-[#E8DCC4] mb-12 relative inline-block"
               style={{ 
                 fontFamily: 'var(--font-playful)',
                 textShadow: '4px 4px 0 rgba(245, 158, 11, 0.5), -2px -2px 0 rgba(236, 72, 153, 0.3)'
@@ -377,7 +377,7 @@ export default function LandingPage() {
             </motion.h1>
             
             <motion.div
-              className="flex flex-wrap justify-center gap-4 text-xl md:text-3xl mb-8 font-bold"
+              className="flex flex-wrap justify-center gap-4 text-xl md:text-3xl mb-16 mt-12 font-bold"
               style={{ fontFamily: 'var(--font-playful)' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -412,7 +412,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-4 justify-center mt-12"
             >
               <motion.div whileHover={{ scale: 1.1, rotate: 2 }} whileTap={{ scale: 0.95 }}>
                 <Button 
