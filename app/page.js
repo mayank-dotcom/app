@@ -97,7 +97,23 @@ const Doodles = {
 
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0)
   const { scrollYProgress } = useScroll()
+
+  // Hero carousel images - aapki attached images
+  const heroImages = [
+    'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/ze1mk8or_image.png',
+    'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/lq1gy9c8_image.png',
+    'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/uslpg1dq_image.png'
+  ]
+
+  // Autoplay carousel effect
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length)
+    }, 5000) // Change slide every 5 seconds
+    return () => clearInterval(timer)
+  }, [])
 
   const services = [
     {
@@ -225,14 +241,29 @@ export default function LandingPage() {
         </div>
       </motion.nav>
 
-      {/* Hero Section */}
+      {/* Hero Section with Autoplay Carousel */}
       <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        {/* Carousel Background - No Blur, No Controls */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#2C2C2C]/90 via-[#3A3A3A]/85 to-[#2C2C2C]/90" />
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-20"
-            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1680490964889-67a5ab8d8b54?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwzfHxpbmRpYW4lMjB3ZWRkaW5nJTIwY2VyZW1vbnl8ZW58MHx8fHwxNzc0NTE5NzkyfDA&ixlib=rb-4.1.0&q=85')` }}
-          />
+          {heroImages.map((image, index) => (
+            <motion.div
+              key={index}
+              className="absolute inset-0"
+              initial={{ opacity: 0 }}
+              animate={{ 
+                opacity: currentSlide === index ? 1 : 0,
+                scale: currentSlide === index ? 1 : 1.1
+              }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+            >
+              <div 
+                className="absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: `url('${image}')` }}
+              />
+              {/* Dark overlay for text readability */}
+              <div className="absolute inset-0 bg-gradient-to-b from-[#2C2C2C]/70 via-[#2C2C2C]/60 to-[#2C2C2C]/80" />
+            </motion.div>
+          ))}
         </div>
         
         <div className="container mx-auto px-4 z-10 text-center relative">
