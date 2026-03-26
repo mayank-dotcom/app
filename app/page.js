@@ -16,11 +16,13 @@ export default function LandingPage() {
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95])
 
-  // Hero carousel - Custom Indian wedding images
+  // Hero carousel - Wedding, Photography & Marketing images
   const heroImages = [
     'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/8xn9gulj_3930b3176d8769a9eb45faa8ad515da7.jpg',
-    'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/4jfmdcf4_fbbffde653371b03dadcd1c165f5e3a3.jpg',
-    'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/h9pr80a1_bbb0cdfdf1548eb0a5ee16dcd79f52c0.jpg'
+    'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/pn181fg7_c60fd9aff016d5dacc5e707ffbb29dc6.jpg',
+    'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/31qxllwa_12f8e6d5192d1ac11e2fce04892a8963.jpg',
+    'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/xiysyvve_c37dbbd5da75fe7a956e189cbf996870.jpg',
+    'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/4jfmdcf4_fbbffde653371b03dadcd1c165f5e3a3.jpg'
   ]
 
   useEffect(() => {
@@ -42,19 +44,19 @@ export default function LandingPage() {
       icon: Camera,
       title: 'Professional Photography',
       description: 'Capture your precious moments with our expert photography services. From weddings to events, we preserve memories that last a lifetime.',
-      image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800',
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/pn181fg7_c60fd9aff016d5dacc5e707ffbb29dc6.jpg',
       features: ['Wedding Photography', 'Event Coverage', 'Portrait Sessions', 'Cinematic Videos']
     },
     {
       icon: Megaphone,
       title: 'Media Enterprise',
       description: 'Elevate your brand with our comprehensive media services. Digital marketing, video production, PR campaigns, and social event endorsements.',
-      image: 'https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&w=800',
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/31qxllwa_12f8e6d5192d1ac11e2fce04892a8963.jpg',
       features: ['Digital Marketing', 'Music Videos', 'PR Campaigns', 'Social Media']
     }
   ]
 
-  // Portfolio carousel with project details
+  // Portfolio carousel with all service projects
   const portfolioProjects = [
     {
       image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/8xn9gulj_3930b3176d8769a9eb45faa8ad515da7.jpg',
@@ -66,28 +68,73 @@ export default function LandingPage() {
       services: ['Venue Management', 'Catering', 'Decoration', 'Photography']
     },
     {
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/pn181fg7_c60fd9aff016d5dacc5e707ffbb29dc6.jpg',
+      title: 'Landscape Photography Project',
+      client: 'Travel Magazine India',
+      date: 'November 2024',
+      type: 'Professional Photography',
+      description: 'Artistic landscape and travel photography capturing scenic beauty and natural moments',
+      services: ['Landscape Photography', 'Travel Documentation', 'Creative Composition', 'Post Processing']
+    },
+    {
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/31qxllwa_12f8e6d5192d1ac11e2fce04892a8963.jpg',
+      title: 'Digital Marketing Campaign',
+      client: 'StartupHub Technologies',
+      date: 'October 2024',
+      type: 'Digital Marketing',
+      description: 'Comprehensive digital marketing strategy with analytics, SEO optimization, and social media management',
+      services: ['SEO Strategy', 'Social Media Marketing', 'Analytics Dashboard', 'Content Creation']
+    },
+    {
       image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/oabh1767_468661e181f8bbf4583ac0b286606aac.jpg',
       title: 'Traditional Ritual Ceremony',
       client: 'Patel Family',
-      date: 'November 2024',
+      date: 'September 2024',
       type: 'Wedding Rituals',
       description: 'Sacred wedding rituals with traditional customs and authentic ceremonies',
       services: ['Ritual Coordination', 'Traditional Decor', 'Photography', 'Priest Arrangement']
     },
     {
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/xiysyvve_c37dbbd5da75fe7a956e189cbf996870.jpg',
+      title: 'Video Production & Live Streaming',
+      client: 'Corporate Events Ltd',
+      date: 'August 2024',
+      type: 'Media Production',
+      description: 'Professional video production with multi-camera setup, drone coverage, and live streaming',
+      services: ['Multi-Camera Setup', 'Drone Videography', 'Live Streaming', 'Post Production']
+    },
+    {
       image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/wzc2hep5_9150891e2e9ec6729a29662558d5a358.jpg',
       title: 'Sacred Fire Ceremony',
       client: 'Reddy Family',
-      date: 'October 2024',
+      date: 'July 2024',
       type: 'Traditional Wedding',
       description: 'Beautiful fire ceremony with traditional blessings and authentic rituals',
       services: ['Event Planning', 'Ritual Management', 'Photography', 'Catering']
     },
     {
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/3bqwfcgf_5e1475a49a264be7fe84fb431a1be4af.jpg',
+      title: 'Professional Event Photography',
+      client: 'Fashion Week Mumbai',
+      date: 'June 2024',
+      type: 'Event Photography',
+      description: 'High-end professional photography for fashion events and corporate gatherings',
+      services: ['Event Coverage', 'Professional Equipment', 'Candid Photography', 'Quick Delivery']
+    },
+    {
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/f8cvmf67_930dc1ac4570507ca25303a967e0cc2d.jpg',
+      title: 'Business Growth Strategy',
+      client: 'Innovation Enterprises',
+      date: 'May 2024',
+      type: 'Marketing Consultation',
+      description: 'Strategic business planning with data-driven insights and growth roadmap development',
+      services: ['Business Analysis', 'Growth Strategy', 'Market Research', 'Brand Development']
+    },
+    {
       image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/h9pr80a1_bbb0cdfdf1548eb0a5ee16dcd79f52c0.jpg',
       title: 'Intimate Wedding Ceremony',
       client: 'Khanna Family',
-      date: 'September 2024',
+      date: 'April 2024',
       type: 'Traditional Wedding',
       description: 'Elegant traditional wedding with sacred rituals and beautiful photography moments',
       services: ['Photography', 'Videography', 'Ritual Planning', 'Decoration']
@@ -96,7 +143,7 @@ export default function LandingPage() {
       image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/4jfmdcf4_fbbffde653371b03dadcd1c165f5e3a3.jpg',
       title: 'Joyous Wedding Celebration',
       client: 'Singh Family',
-      date: 'August 2024',
+      date: 'March 2024',
       type: 'Complete Wedding',
       description: 'Grand wedding celebration with rose petals shower and traditional ceremonies',
       services: ['Complete Planning', 'Photography', 'Decoration', 'Guest Management']
