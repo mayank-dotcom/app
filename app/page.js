@@ -16,11 +16,11 @@ export default function LandingPage() {
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95])
 
-  // Hero carousel - Indian wedding images
+  // Hero carousel - Custom Indian wedding images
   const heroImages = [
-    'https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=2070',
-    'https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=2070',
-    'https://images.unsplash.com/photo-1591604466107-ec97de577aff?q=80&w=2070'
+    'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/8xn9gulj_3930b3176d8769a9eb45faa8ad515da7.jpg',
+    'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/4jfmdcf4_fbbffde653371b03dadcd1c165f5e3a3.jpg',
+    'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/h9pr80a1_bbb0cdfdf1548eb0a5ee16dcd79f52c0.jpg'
   ]
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function LandingPage() {
       icon: Heart,
       title: 'Marriage Planning',
       description: 'Complete wedding solutions for Shaadi, Mehendi, Sangeet, and all Indian wedding ceremonies. We bring your dream wedding to life with meticulous planning and execution.',
-      image: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=800',
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/oabh1767_468661e181f8bbf4583ac0b286606aac.jpg',
       features: ['Traditional Ceremonies', 'Venue Decoration', 'Catering Services', 'Guest Management']
     },
     {
@@ -57,7 +57,7 @@ export default function LandingPage() {
   // Portfolio carousel with project details
   const portfolioProjects = [
     {
-      image: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=1200',
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/8xn9gulj_3930b3176d8769a9eb45faa8ad515da7.jpg',
       title: 'Grand Sharma Wedding',
       client: 'Sharma & Gupta Family',
       date: 'December 2024',
@@ -66,40 +66,40 @@ export default function LandingPage() {
       services: ['Venue Management', 'Catering', 'Decoration', 'Photography']
     },
     {
-      image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1200',
-      title: 'Royal Rajasthani Wedding',
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/oabh1767_468661e181f8bbf4583ac0b286606aac.jpg',
+      title: 'Traditional Ritual Ceremony',
       client: 'Patel Family',
       date: 'November 2024',
-      type: 'Destination Wedding',
-      description: 'Luxury destination wedding in Udaipur with traditional Rajasthani customs and royal ambiance',
-      services: ['Complete Planning', 'Travel Coordination', 'Traditional Decor', 'Live Entertainment']
+      type: 'Wedding Rituals',
+      description: 'Sacred wedding rituals with traditional customs and authentic ceremonies',
+      services: ['Ritual Coordination', 'Traditional Decor', 'Photography', 'Priest Arrangement']
     },
     {
-      image: 'https://images.unsplash.com/photo-1591604466107-ec97de577aff?q=80&w=1200',
-      title: 'Mehendi Ceremony Special',
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/wzc2hep5_9150891e2e9ec6729a29662558d5a358.jpg',
+      title: 'Sacred Fire Ceremony',
       client: 'Reddy Family',
       date: 'October 2024',
-      type: 'Traditional Mehendi Event',
-      description: 'Beautiful mehendi ceremony with traditional music, dance, and authentic henna artists',
-      services: ['Event Planning', 'Artist Coordination', 'Photography', 'Catering']
+      type: 'Traditional Wedding',
+      description: 'Beautiful fire ceremony with traditional blessings and authentic rituals',
+      services: ['Event Planning', 'Ritual Management', 'Photography', 'Catering']
     },
     {
-      image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200',
-      title: 'Intimate Garden Wedding',
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/h9pr80a1_bbb0cdfdf1548eb0a5ee16dcd79f52c0.jpg',
+      title: 'Intimate Wedding Ceremony',
       client: 'Khanna Family',
       date: 'September 2024',
-      type: 'Outdoor Wedding Photography',
-      description: 'Elegant garden wedding with natural lighting and candid photography moments',
-      services: ['Photography', 'Videography', 'Drone Coverage', 'Album Design']
+      type: 'Traditional Wedding',
+      description: 'Elegant traditional wedding with sacred rituals and beautiful photography moments',
+      services: ['Photography', 'Videography', 'Ritual Planning', 'Decoration']
     },
     {
-      image: 'https://images.unsplash.com/photo-1587271407850-8d438ca9fdf2?q=80&w=1200',
-      title: 'Corporate Diwali Celebration',
-      client: 'TechCorp India',
-      date: 'November 2024',
-      type: 'Corporate Event',
-      description: 'Grand Diwali celebration for 300+ employees with traditional performances and modern entertainment',
-      services: ['Event Management', 'Media Coverage', 'Digital Content', 'Live Streaming']
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/4jfmdcf4_fbbffde653371b03dadcd1c165f5e3a3.jpg',
+      title: 'Joyous Wedding Celebration',
+      client: 'Singh Family',
+      date: 'August 2024',
+      type: 'Complete Wedding',
+      description: 'Grand wedding celebration with rose petals shower and traditional ceremonies',
+      services: ['Complete Planning', 'Photography', 'Decoration', 'Guest Management']
     }
   ]
 
@@ -143,7 +143,7 @@ export default function LandingPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#F5E6D3] to-[#E8DCC4]">
+    <div className="min-h-screen bg-gradient-to-b from-[#F5E6D3] to-[#E8DCC4] overflow-x-hidden">
       {/* Navigation */}
       <motion.nav 
         initial={{ y: -100 }}
@@ -339,18 +339,96 @@ export default function LandingPage() {
       </section>
 
       {/* Portfolio Carousel Section */}
-      <section id="portfolio" className="py-20 bg-gradient-to-b from-[#E8DCC4] to-[#F5E6D3]">
-        <div className="container mx-auto px-4">
+      <section id="portfolio" className="py-20 bg-gradient-to-b from-[#E8DCC4] to-[#F5E6D3] relative overflow-hidden">
+        {/* Decorative background */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-10 w-64 h-64 bg-[#1A1A1A] rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#1A1A1A] rounded-full blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            transition={{ duration: 0.6 }}
+            className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-4">Our Portfolio</h2>
-            <p className="text-[#1A1A1A]/70 text-lg">
-              Recent projects that showcase our expertise and dedication
-            </p>
+            {/* Decorative top line */}
+            <motion.div 
+              className="flex items-center justify-center gap-4 mb-6"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="h-px w-20 bg-gradient-to-r from-transparent to-[#1A1A1A]" />
+              <div className="w-2 h-2 bg-[#1A1A1A] rounded-full" />
+              <div className="h-px w-20 bg-gradient-to-l from-transparent to-[#1A1A1A]" />
+            </motion.div>
+
+            {/* Main heading with decorative elements */}
+            <motion.div className="relative inline-block">
+              <motion.h2 
+                className="text-5xl md:text-7xl font-bold text-[#1A1A1A] mb-4 relative"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
+                <span className="relative inline-block">
+                  Our Portfolio
+                  {/* Decorative underline */}
+                  <motion.div
+                    className="absolute -bottom-4 left-0 right-0 h-1 bg-gradient-to-r from-[#1A1A1A] via-[#E8DCC4] to-[#1A1A1A]"
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                  />
+                  {/* Corner decorations */}
+                  <motion.div
+                    className="absolute -top-4 -left-4 w-8 h-8 border-t-4 border-l-4 border-[#1A1A1A]"
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.6 }}
+                  />
+                  <motion.div
+                    className="absolute -bottom-4 -right-4 w-8 h-8 border-b-4 border-r-4 border-[#1A1A1A]"
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.6 }}
+                  />
+                </span>
+              </motion.h2>
+            </motion.div>
+
+            {/* Subtitle */}
+            <motion.p 
+              className="text-[#1A1A1A]/80 text-xl font-medium max-w-2xl mx-auto mt-8"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+            >
+              Recent projects that showcase our <span className="text-[#1A1A1A] font-bold italic">expertise</span> and{' '}
+              <span className="text-[#1A1A1A] font-bold italic">dedication</span>
+            </motion.p>
+
+            {/* Decorative bottom accent */}
+            <motion.div
+              className="flex items-center justify-center gap-2 mt-6"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+            >
+              <div className="w-2 h-2 bg-[#1A1A1A] rounded-full" />
+              <div className="w-3 h-3 bg-[#1A1A1A] rounded-full" />
+              <div className="w-2 h-2 bg-[#1A1A1A] rounded-full" />
+            </motion.div>
           </motion.div>
 
           <div className="relative max-w-6xl mx-auto">
