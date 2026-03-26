@@ -98,6 +98,7 @@ const Doodles = {
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [currentGallerySlide, setCurrentGallerySlide] = useState(0)
   const { scrollYProgress } = useScroll()
 
   // Hero carousel images - aapki attached images
@@ -107,11 +108,68 @@ export default function LandingPage() {
     'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/uslpg1dq_image.png'
   ]
 
-  // Autoplay carousel effect
+  // Autoplay carousel effect for hero
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroImages.length)
     }, 5000) // Change slide every 5 seconds
+    return () => clearInterval(timer)
+  }, [])
+
+  // Gallery carousel with project details
+  const portfolioProjects = [
+    {
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/87k1a1ec_image.png',
+      title: 'Traditional Wedding Ceremony',
+      client: 'Sharma Family',
+      date: 'December 2024',
+      type: 'Full Wedding Planning',
+      description: 'Complete traditional Indian wedding with Shaadi, Mehendi, and Sangeet ceremonies',
+      color: 'from-orange-500 to-yellow-500'
+    },
+    {
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/a08pcvzz_1774524772570-019d29ea-86f6-744f-8194-cd0efde6e851.png',
+      title: 'Corporate Event Coverage',
+      client: 'TechCorp Solutions',
+      date: 'January 2025',
+      type: 'Video Production',
+      description: 'Professional videography for annual corporate summit with live streaming',
+      color: 'from-green-500 to-teal-500'
+    },
+    {
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/jk7v1xhu_fsb.jpg',
+      title: 'Digital Marketing Campaign',
+      client: 'StartupHub India',
+      date: 'November 2024',
+      type: 'Media & Marketing',
+      description: 'Complete digital marketing strategy with social media management and SEO',
+      color: 'from-blue-500 to-purple-500'
+    },
+    {
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/32gistms_mehendi.jpg',
+      title: 'Mehendi Ceremony Special',
+      client: 'Patel Family',
+      date: 'October 2024',
+      type: 'Event Planning & Photography',
+      description: 'Beautiful mehendi ceremony with traditional decorations and photography',
+      color: 'from-pink-500 to-rose-500'
+    },
+    {
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/3ojyc5ff_1774525203148-019d29f0-2e2e-7042-899c-940d4336fd31.png',
+      title: 'Adventure Photo Shoot',
+      client: 'Wanderlust Magazine',
+      date: 'September 2024',
+      type: 'Professional Photography',
+      description: 'Desert adventure photography shoot for travel magazine feature',
+      color: 'from-yellow-600 to-orange-600'
+    }
+  ]
+
+  // Autoplay carousel effect for gallery
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentGallerySlide((prev) => (prev + 1) % portfolioProjects.length)
+    }, 6000) // Change slide every 6 seconds
     return () => clearInterval(timer)
   }, [])
 
@@ -145,14 +203,7 @@ export default function LandingPage() {
     }
   ]
 
-  const gallery = [
-    { url: 'https://images.unsplash.com/photo-1680490964562-60ee7fd82944?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjB3ZWRkaW5nJTIwY2VyZW1vbnl8ZW58MHx8fHwxNzc0NTE5NzkyfDA&ixlib=rb-4.1.0&q=85', category: 'Wedding', emoji: '💑' },
-    { url: 'https://images.pexels.com/photos/1456669/pexels-photo-1456669.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', category: 'Traditional', emoji: '👰' },
-    { url: 'https://images.unsplash.com/photo-1505932794465-147d1f1b2c97?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzZ8MHwxfHNlYXJjaHwxfHxtZWhlbmRpfGVufDB8fHx8MTc3NDUxOTc5OXww&ixlib=rb-4.1.0&q=85', category: 'Mehendi', emoji: '🎨' },
-    { url: 'https://images.unsplash.com/photo-1587012521796-6359d3678f2a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODh8MHwxfHNlYXJjaHwxfHxzYW5nZWV0fGVufDB8fHx8MTc3NDUxOTgwNHww&ixlib=rb-4.1.0&q=85', category: 'Sangeet', emoji: '💃' },
-    { url: 'https://images.pexels.com/photos/7205410/pexels-photo-7205410.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', category: 'Photography', emoji: '📷' },
-    { url: 'https://images.unsplash.com/photo-1698199071311-bd5fe0e37449?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDV8MHwxfHNlYXJjaHwyfHxjYW1lcmElMjBtZWRpYXxlbnwwfHx8fDE3NzQ1MTk4NDF8MA&ixlib=rb-4.1.0&q=85', category: 'Media', emoji: '🎬' }
-  ]
+  const gallery = []
 
   const testimonials = [
     { name: 'Priya & Rahul', event: 'Wedding Ceremony', text: 'Our wedding was absolutely perfect! Every detail was beautifully executed. Thank you!', rating: 5, emoji: '😍' },
@@ -490,8 +541,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section id="gallery" className="py-20 bg-gradient-to-br from-[#E8DCC4] via-[#F5E6D3] to-[#E8DCC4] relative">
+      {/* Gallery Section - Circular Animated Carousel */}
+      <section id="gallery" className="py-20 bg-gradient-to-br from-[#E8DCC4] via-[#F5E6D3] to-[#E8DCC4] relative overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -521,34 +572,106 @@ export default function LandingPage() {
               </svg>
             </motion.h2>
             <p className="text-[#2C2C2C]/70 text-xl font-bold italic mt-6" style={{ fontFamily: 'var(--font-playful)' }}>
-              Check out these awesome celebrations! ✨
+              Check out our latest projects! ✨
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {gallery.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05, rotate: index % 2 === 0 ? 2 : -2, y: -10 }}
-                className="relative overflow-hidden rounded-3xl group cursor-pointer h-80 border-4 border-[#2C2C2C] shadow-[6px_6px_0_#2C2C2C] hover:shadow-[3px_3px_0_#2C2C2C] transition-all"
-              >
-                <img src={item.url} alt={item.category} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2C2C2C] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          {/* Circular Carousel Container */}
+          <div className="relative max-w-5xl mx-auto">
+            <div className="relative h-[600px] flex items-center justify-center">
+              {portfolioProjects.map((project, index) => {
+                const isActive = currentGallerySlide === index
+                const isPrev = currentGallerySlide === (index + 1) % portfolioProjects.length
+                const isNext = (currentGallerySlide + 1) % portfolioProjects.length === index
+                
+                return (
+                  <motion.div
+                    key={index}
+                    className="absolute"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{
+                      opacity: isActive ? 1 : isPrev || isNext ? 0.5 : 0,
+                      scale: isActive ? 1 : isPrev || isNext ? 0.7 : 0.5,
+                      x: isActive ? 0 : isPrev ? -400 : isNext ? 400 : 0,
+                      zIndex: isActive ? 20 : isPrev || isNext ? 10 : 0,
+                    }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
+                  >
+                    <div className="relative w-[500px] h-[500px]">
+                      {/* Circular Image Container */}
+                      <motion.div
+                        className="relative w-full h-full rounded-full overflow-hidden border-8 border-[#2C2C2C] shadow-[12px_12px_0_#2C2C2C]"
+                        animate={isActive ? { rotate: [0, 2, -2, 0] } : {}}
+                        transition={{ duration: 3, repeat: Infinity }}
+                      >
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                        />
+                        {/* Gradient Overlay */}
+                        <div className={`absolute inset-0 bg-gradient-to-t ${project.color} opacity-30`} />
+                      </motion.div>
+
+                      {/* Project Details Overlay */}
+                      {isActive && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.3 }}
+                          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-[90%]"
+                        >
+                          <div className="bg-white rounded-3xl p-6 border-4 border-[#2C2C2C] shadow-[8px_8px_0_#2C2C2C]">
+                            <motion.div
+                              className={`inline-block px-4 py-2 rounded-full bg-gradient-to-r ${project.color} text-white font-black text-sm mb-3 border-3 border-[#2C2C2C]`}
+                              animate={{ scale: [1, 1.05, 1] }}
+                              transition={{ duration: 2, repeat: Infinity }}
+                            >
+                              {project.type}
+                            </motion.div>
+                            <h3 className="text-2xl font-black text-[#2C2C2C] mb-2" style={{ fontFamily: 'var(--font-playful)' }}>
+                              {project.title}
+                            </h3>
+                            <p className="text-[#2C2C2C]/70 font-medium italic mb-3">
+                              {project.description}
+                            </p>
+                            <div className="flex justify-between items-center border-t-2 border-dashed border-[#2C2C2C]/20 pt-3">
+                              <div>
+                                <p className="text-xs font-bold text-[#2C2C2C]/60">CLIENT</p>
+                                <p className="text-sm font-black text-[#2C2C2C]">{project.client}</p>
+                              </div>
+                              <div className="text-right">
+                                <p className="text-xs font-bold text-[#2C2C2C]/60">DATE</p>
+                                <p className="text-sm font-black text-[#2C2C2C]">{project.date}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </div>
+                  </motion.div>
+                )
+              })}
+            </div>
+
+            {/* Progress Indicator Dots */}
+            <div className="flex justify-center gap-3 mt-12">
+              {portfolioProjects.map((_, index) => (
                 <motion.div
-                  className="absolute bottom-4 left-4 bg-white px-6 py-3 rounded-full border-3 border-[#2C2C2C] font-black shadow-lg"
-                  initial={{ y: 100 }}
-                  whileInView={{ y: 0 }}
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                >
-                  <span className="mr-2">{item.emoji}</span>
-                  {item.category}
-                </motion.div>
-              </motion.div>
-            ))}
+                  key={index}
+                  className={`rounded-full border-3 border-[#2C2C2C] transition-all ${
+                    currentGallerySlide === index ? 'w-12 h-4' : 'w-4 h-4'
+                  }`}
+                  style={{
+                    background: currentGallerySlide === index
+                      ? 'linear-gradient(to right, #EC4899, #8B5CF6)'
+                      : '#E8DCC4'
+                  }}
+                  animate={currentGallerySlide === index ? { scale: [1, 1.1, 1] } : {}}
+                  transition={{ duration: 0.5 }}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -766,10 +889,22 @@ export default function LandingPage() {
             <div>
               <h4 className="font-black mb-4 text-xl" style={{ fontFamily: 'var(--font-playful)' }}>Services 🎯</h4>
               <ul className="space-y-2 text-[#E8DCC4]/70 font-medium">
-                <li>💒 Wedding Planning</li>
-                <li>📸 Photography</li>
-                <li>🎬 Media Production</li>
-                <li>🎉 Event Management</li>
+                <li className="flex items-center gap-2">
+                  <Heart size={18} className="text-pink-400" />
+                  <span>Wedding Planning</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Camera size={18} className="text-blue-400" />
+                  <span>Photography</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Megaphone size={18} className="text-purple-400" />
+                  <span>Media Production</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Calendar size={18} className="text-yellow-400" />
+                  <span>Event Management</span>
+                </li>
               </ul>
             </div>
             <div>
