@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Camera, Heart, Megaphone, Menu, X, ChevronRight, Star, Calendar, Mail, Phone, MapPin, Sparkles } from 'lucide-react'
+import { Camera, Heart, Megaphone, Menu, X, ChevronRight, Star, Calendar, Mail, Phone, MapPin, Sparkles, Facebook, Instagram, Twitter } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -121,7 +121,7 @@ export default function LandingPage() {
       title: 'Marriage Planning',
       emoji: '💒',
       description: 'Complete wedding solutions for Shaadi, Mehendi, Sangeet, and all Indian wedding ceremonies!',
-      image: 'https://images.unsplash.com/photo-1680490964889-67a5ab8d8b54?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTF8MHwxfHNlYXJjaHwzfHxpbmRpYW4lMjB3ZWRkaW5nJTIwY2VyZW1vbnl8ZW58MHx8fHwxNzc0NTE5NzkyfDA&ixlib=rb-4.1.0&q=85',
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/ofjy98n1_image.png',
       features: ['✨ Traditional Ceremonies', '🎊 Venue Decoration', '🍽️ Catering Magic', '👥 Guest Management'],
       color: 'from-pink-400 to-rose-400'
     },
@@ -130,7 +130,7 @@ export default function LandingPage() {
       title: 'Professional Photography',
       emoji: '📸',
       description: 'Capture your precious moments with our expert photography services!',
-      image: 'https://images.unsplash.com/photo-1759767510137-5789ea9c919f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzOTB8MHwxfHNlYXJjaHw0fHxwcm9mZXNzaW9uYWwlMjBwaG90b2dyYXBoZXJ8ZW58MHx8fHwxNzc0NTE5ODM3fDA&ixlib=rb-4.1.0&q=85',
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/o729vcmr_image.png',
       features: ['💍 Wedding Photography', '🎉 Event Coverage', '🤳 Portrait Sessions', '🎬 Cinematic Videos'],
       color: 'from-blue-400 to-cyan-400'
     },
@@ -139,7 +139,7 @@ export default function LandingPage() {
       title: 'Media Enterprise',
       emoji: '🎯',
       description: 'Elevate your brand with our comprehensive media services!',
-      image: 'https://images.unsplash.com/photo-1575507479993-7bb702d5e966?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MDV8MHwxfHNlYXJjaHw0fHxjYW1lcmElMjBtZWRpYXxlbnwwfHx8fDE3NzQ1MTk4NDF8MA&ixlib=rb-4.1.0&q=85',
+      image: 'https://customer-assets.emergentagent.com/job_celebration-pro-3/artifacts/fze67wl6_image.png',
       features: ['📱 Digital Marketing', '🎵 Music Videos', '📢 PR Campaigns', '🌟 Social Media'],
       color: 'from-purple-400 to-violet-400'
     }
@@ -784,15 +784,22 @@ export default function LandingPage() {
             <div>
               <h4 className="font-black mb-4 text-xl" style={{ fontFamily: 'var(--font-playful)' }}>Follow Us! 🌟</h4>
               <div className="flex gap-4">
-                {[{ name: 'F', color: 'from-blue-400 to-blue-600' }, { name: 'I', color: 'from-pink-400 to-purple-600' }, { name: 'T', color: 'from-cyan-400 to-blue-500' }].map((social, idx) => (
-                  <motion.div
-                    key={idx}
-                    whileHover={{ scale: 1.2, rotate: 10 }}
-                    className={`w-12 h-12 bg-gradient-to-br ${social.color} rounded-full flex items-center justify-center cursor-pointer border-3 border-white font-black text-white shadow-lg`}
-                  >
-                    {social.name}
-                  </motion.div>
-                ))}
+                {[
+                  { icon: Facebook, name: 'Facebook', color: 'from-blue-500 to-blue-700' },
+                  { icon: Instagram, name: 'Instagram', color: 'from-pink-500 via-purple-500 to-orange-500' },
+                  { icon: Twitter, name: 'Twitter', color: 'from-cyan-400 to-blue-500' }
+                ].map((social, idx) => {
+                  const SocialIcon = social.icon
+                  return (
+                    <motion.div
+                      key={idx}
+                      whileHover={{ scale: 1.2, rotate: 10 }}
+                      className={`w-12 h-12 bg-gradient-to-br ${social.color} rounded-full flex items-center justify-center cursor-pointer border-3 border-white shadow-lg`}
+                    >
+                      <SocialIcon className="text-white" size={24} strokeWidth={2.5} />
+                    </motion.div>
+                  )
+                })}
               </div>
             </div>
           </div>
