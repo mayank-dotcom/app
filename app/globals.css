@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
+    --font-playful: 'Kalam', 'Caveat', cursive;
     --background: 38 30 15;
     --foreground: 38 20 5;
     --card: 44 36 20;
@@ -21,7 +24,7 @@
     --border: 232 220 196;
     --input: 44 44 44;
     --ring: 232 220 196;
-    --radius: 0.5rem;
+    --radius: 1rem;
   }
 }
 
@@ -31,56 +34,87 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-playful);
   }
 }
 
-/* Custom Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Hand-drawn wiggle animation */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px) rotate(-1deg); }
+  75% { transform: translateX(5px) rotate(1deg); }
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
+@keyframes draw {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
 }
 
-.animate-fadeInUp {
-  animation: fadeInUp 0.6s ease-out;
+.animate-wiggle {
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 3s ease-in-out infinite;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out infinite;
 }
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
 
-.animate-shimmer {
-  animation: shimmer 2s infinite;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(232, 220, 196, 0.3) 50%,
-    transparent 100%
-  );
-  background-size: 1000px 100%;
+/* Rough border effect */
+.rough-border {
+  position: relative;
+  border: none;
+}
+
+.rough-border::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: transparent;
+  border: 4px solid currentColor;
+  border-radius: inherit;
+  filter: url(#rough);
+}
+
+/* Custom Scrollbar with playful style */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2C2C2C;
+  border-left: 3px dashed #E8DCC4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #F59E0B, #EC4899);
+  border-radius: 10px;
+  border: 2px solid #2C2C2C;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #EC4899, #8B5CF6);
 }
 
 /* Smooth Scrolling */
@@ -88,20 +122,71 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
+/* Selection color */
+::selection {
+  background-color: #F59E0B;
+  color: #2C2C2C;
 }
 
-::-webkit-scrollbar-track {
-  background: #2C2C2C;
+/* Hand-drawn underline effect */
+.hand-underline {
+  position: relative;
+  display: inline-block;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #E8DCC4;
-  border-radius: 5px;
+.hand-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  border-radius: 2px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #F5E6D3;
+.hand-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* Sketchy button effect */
+.sketchy-button {
+  position: relative;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.sketchy-button:hover {
+  transform: translate(-2px, -2px);
+}
+
+/* Doodle animations */
+@keyframes doodle-draw {
+  from {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.doodle-line {
+  animation: doodle-draw 2s ease-in-out forwards;
+}
+
+/* Playful shadow */
+.playful-shadow {
+  box-shadow: 
+    4px 4px 0 #2C2C2C,
+    8px 8px 0 rgba(245, 158, 11, 0.3);
+}
+
+.playful-shadow:hover {
+  box-shadow: 
+    2px 2px 0 #2C2C2C,
+    4px 4px 0 rgba(245, 158, 11, 0.3);
 }
